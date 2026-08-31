@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Percentage Calculator Online | FileFixTools</title>
+
+<meta name="description" content="Calculate percentages instantly with our free online percentage calculator. Find percentages, percentage increase, decrease, and percentage change quickly and easily.">
+
+<meta name="keywords" content="percentage calculator, calculate percentage, percentage increase calculator, percentage decrease calculator, percentage change calculator">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://filefixtools.github.io/image-compressor/percentage-calculator.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Percentage Calculator Online | FileFixTools">
+<meta property="og:description" content="Calculate percentages instantly with our free online percentage calculator. Find percentages, percentage increase, decrease, and percentage change quickly and easily.">
+<meta property="og:url" content="https://filefixtools.github.io/image-compressor/percentage-calculator.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Percentage Calculator Online | FileFixTools">
+<meta name="twitter:description" content="Calculate percentages instantly — find percentages, percentage increase, decrease, and percentage change quickly and easily.">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f7fb;
+    --card-bg:#ffffff;
+    --text:#161726;
+    --text-muted:#5c5f77;
+    --border:#e7e9f2;
+    --blue:#4f6bf6;
+    --purple:#8b5cf6;
+    --gradient: linear-gradient(135deg, #4f6bf6 0%, #8b5cf6 100%);
+    --gradient-soft: linear-gradient(135deg, rgba(79,107,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+    --success:#16a34a;
+    --success-soft: rgba(22,163,74,0.10);
+    --danger:#dc2626;
+    --header-bg: rgba(255,255,255,0.82);
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 2px 10px rgba(20,20,50,0.05);
+    --shadow-md: 0 10px 30px rgba(20,20,50,0.08);
+    --shadow-lg: 0 24px 60px rgba(20,20,50,0.12);
+    --footer-bg:#12132a;
+    --footer-text:#c7c9dd;
+    --footer-muted:#9698b8;
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"]{
+    --bg:#0b0c16;
+    --bg-soft:#12131f;
+    --card-bg:#161826;
+    --text:#f1f2fa;
+    --text-muted:#a4a6c2;
+    --border:#262841;
+    --gradient-soft: linear-gradient(135deg, rgba(79,107,246,0.16) 0%, rgba(139,92,246,0.16) 100%);
+    --success-soft: rgba(22,163,74,0.16);
+    --header-bg: rgba(11,12,22,0.78);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.28);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.34);
+    --shadow-lg: 0 24px 60px rgba(0,0,0,0.45);
+    --footer-bg:#08091380;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em 0;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:100;
+    background:var(--header-bg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1160px;margin:0 auto;
+    gap:16px;
+  }
+  .logo{
+    display:inline-flex;align-items:baseline;gap:1px;
+    font-weight:800;font-size:1.32rem;letter-spacing:-0.02em;
+    flex-shrink:0;
+  }
+  .logo .lg-file{color:var(--text);}
+  .logo .lg-fix{
+    background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .logo .lg-tools{color:var(--text-muted);font-weight:700;font-size:0.85em;margin-left:2px;}
+
+  nav.main-nav{flex:1;display:flex;justify-content:center;}
+  nav.main-nav ul{
+    list-style:none;display:flex;align-items:center;gap:8px;margin:0;padding:0;
+  }
+  nav.main-nav a{
+    font-weight:600;font-size:0.92rem;color:var(--text-muted);
+    transition:color .2s ease, background .2s ease;
+    padding:9px 14px;border-radius:10px;
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  nav.main-nav a:hover, nav.main-nav a:focus-visible{color:var(--blue);background:var(--gradient-soft);}
+  nav.main-nav a.active-link{color:var(--blue);background:var(--gradient-soft);}
+  nav.main-nav li.has-dropdown{position:relative;}
+  nav.main-nav .caret{width:9px;height:9px;flex-shrink:0;opacity:0.6;}
+  .dropdown-menu{
+    list-style:none;margin:0;padding:8px;
+    position:absolute;top:calc(100% + 6px);left:0;min-width:180px;
+    background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+    box-shadow:var(--shadow-md);
+    opacity:0;visibility:hidden;transform:translateY(6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  }
+  nav.main-nav li.has-dropdown:hover .dropdown-menu,
+  nav.main-nav li.has-dropdown:focus-within .dropdown-menu{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .dropdown-menu li a{display:block;padding:9px 12px;border-radius:8px;font-size:0.9rem;}
+
+  .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+  .theme-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:10px;
+    background:var(--bg-soft);border:1px solid var(--border);
+    color:var(--text);transition:background .2s ease, transform .15s ease;
+  }
+  .theme-toggle:hover{background:var(--gradient-soft);}
+  .theme-toggle svg{width:18px;height:18px;}
+  .theme-toggle .icon-moon{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-sun{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
+
+  .menu-toggle{
+    display:none;background:none;border:none;padding:8px;border-radius:8px;
+  }
+  .menu-toggle span{
+    display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.open span:nth-child(2){opacity:0;}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:860px){
+    nav.main-nav{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--card-bg);border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow-md);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+      justify-content:flex-start;
+    }
+    nav.main-nav.open{max-height:420px;overflow-y:auto;}
+    nav.main-nav ul{flex-direction:column;align-items:stretch;padding:12px 20px 18px;gap:2px;}
+    nav.main-nav a{display:block;padding:12px 10px;border-radius:8px;}
+    .dropdown-menu{
+      position:static;opacity:1;visibility:visible;transform:none;
+      box-shadow:none;border:none;background:none;padding:0 0 0 14px;margin-top:2px;
+    }
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 24px 54px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(79,107,246,0.10), transparent 45%),
+      radial-gradient(circle at 80% 10%, rgba(139,92,246,0.10), transparent 45%);
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gradient-soft);
+    color:var(--blue);
+    font-weight:600;font-size:0.85rem;
+    padding:8px 16px;border-radius:999px;
+    margin-bottom:22px;
+    border:1px solid rgba(79,107,246,0.2);
+  }
+  .badge svg{width:16px;height:16px;flex-shrink:0;}
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.3rem);
+    font-weight:800;
+    letter-spacing:-0.03em;
+    max-width:760px;margin:0 auto 18px;
+  }
+  .hero h1 .grad{
+    background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.subhead{
+    max-width:600px;margin:0 auto;
+    font-size:1.1rem;color:var(--text-muted);
+  }
+  .hero .inline-link{
+    color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;
+  }
+
+  /* ---------- Tool Card ---------- */
+  .tool-section{padding:36px 24px 80px;}
+  .tool-card{
+    max-width:720px;margin:0 auto;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+    padding:36px;
+    position:relative;
+    overflow:hidden;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  @media (max-width:600px){ .tool-card{padding:22px 16px;border-radius:var(--radius-md);} }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border:none;border-radius:12px;
+    font-weight:700;font-size:0.95rem;
+    padding:13px 26px;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--gradient);color:#fff;
+    box-shadow:0 10px 24px rgba(79,107,246,0.30);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,107,246,0.38);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-secondary{
+    background:var(--bg-soft);color:var(--text);border:1px solid var(--border);
+  }
+  .btn-secondary:hover{background:var(--gradient-soft);border-color:rgba(79,107,246,0.3);}
+  .btn-lg{padding:16px 28px;font-size:1rem;border-radius:14px;}
+  .btn-block{width:100%;}
+
+  /* ---------- Calculator tabs ---------- */
+  .calc-tabs{
+    display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px;
+  }
+  .calc-tab{
+    background:var(--bg-soft);
+    border:1.5px solid var(--border);
+    color:var(--text);
+    font-weight:700;font-size:0.85rem;
+    padding:9px 16px;border-radius:999px;
+    transition:all .15s ease;
+  }
+  .calc-tab:hover{border-color:var(--blue);color:var(--blue);}
+  .calc-tab.active{
+    background:var(--gradient);border-color:transparent;color:#fff;
+    box-shadow:0 6px 16px rgba(79,107,246,0.30);
+  }
+
+  .calc-panel{display:none;animation:fadeIn .3s ease;}
+  .calc-panel.active{display:block;}
+  .calc-panel h2{font-size:1.15rem;margin-bottom:4px;}
+  .calc-panel .calc-example{color:var(--text-muted);font-size:0.86rem;margin:0 0 20px;}
+
+  .calc-fields{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;
+  }
+  @media (max-width:480px){ .calc-fields{grid-template-columns:1fr;} }
+  .calc-field label{
+    display:block;font-weight:700;font-size:0.85rem;margin-bottom:8px;
+  }
+  .calc-field input[type="number"]{
+    width:100%;
+    padding:13px 14px;
+    border:1.5px solid var(--border);
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:600;
+    color:var(--text);
+    background:var(--card-bg);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .calc-field input[type="number"]:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px var(--gradient-soft);}
+
+  .calc-actions{display:flex;gap:12px;margin-bottom:22px;}
+  @media (max-width:480px){ .calc-actions{flex-direction:column;} }
+
+  .calc-result{
+    display:none;
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    background:var(--bg-soft);
+    padding:22px 22px;
+    animation:fadeIn .35s ease;
+  }
+  .calc-result.show{display:block;}
+  .calc-result .cr-label{
+    font-size:0.78rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  }
+  .calc-result .cr-value{
+    font-size:2rem;font-weight:800;margin-top:6px;color:var(--success);
+    word-break:break-word;
+  }
+  .calc-result .cr-detail{
+    font-size:0.88rem;color:var(--text-muted);margin-top:8px;
+  }
+  .calc-result .cr-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;}
+  .copy-btn{
+    background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);
+    font-weight:700;font-size:0.85rem;padding:9px 16px;border-radius:10px;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:all .15s ease;
+  }
+  .copy-btn:hover{border-color:var(--blue);color:var(--blue);}
+  .copy-btn svg{width:14px;height:14px;}
+  .copy-btn.copied{border-color:var(--success);color:var(--success);}
+
+  .calc-error{
+    display:none;
+    margin-top:4px;margin-bottom:18px;
+    background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.25);color:#a12626;
+    padding:12px 14px;border-radius:12px;font-size:0.88rem;font-weight:600;
+  }
+  html[data-theme="dark"] .calc-error{ color:#ff9b9b; }
+  .calc-error.show{display:block;}
+
+  @keyframes fadeIn{ from{opacity:0;transform:translateY(6px);} to{opacity:1;transform:translateY(0);} }
+
+  /* ---------- Generic Sections ---------- */
+  section{padding:76px 24px;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 46px;}
+  .section-head h2{font-size:clamp(1.55rem,3.5vw,2.2rem);letter-spacing:-0.02em;}
+  .section-head p{color:var(--text-muted);font-size:1.02rem;}
+  .section-alt{background:var(--bg-soft);}
+
+  /* How to Use */
+  .steps-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;
+  }
+  @media (max-width:800px){ .steps-grid{grid-template-columns:1fr;} }
+  .step-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:28px 24px;text-align:center;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .step-num{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--gradient);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.05rem;
+  }
+  .step-card h3{font-size:1.1rem;}
+  .step-card p{color:var(--text-muted);font-size:0.92rem;margin:0;}
+
+  /* SEO content */
+  .seo-content{max-width:800px;margin:0 auto;}
+  .seo-content h2{font-size:1.65rem;margin-top:0;}
+  .seo-content h3{font-size:1.18rem;margin-top:34px;}
+  .seo-content p{color:var(--text-muted);font-size:1rem;margin-bottom:16px;}
+  .seo-content ul{color:var(--text-muted);padding-left:22px;}
+  .seo-content li{margin-bottom:8px;}
+  .seo-content a{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+  .compare-table{
+    width:100%;border-collapse:collapse;margin:20px 0 30px;
+    font-size:0.92rem;
+  }
+  .compare-table th,.compare-table td{
+    text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);
+  }
+  .compare-table th{color:var(--text);font-weight:700;background:var(--bg-soft);}
+  .compare-table td{color:var(--text-muted);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid var(--border);
+    padding:6px 0;
+  }
+  .faq-question{
+    width:100%;text-align:left;background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 4px;font-weight:700;font-size:1rem;color:var(--text);
+  }
+  .faq-question .icon{
+    width:22px;height:22px;flex-shrink:0;position:relative;
+  }
+  .faq-question .icon::before,.faq-question .icon::after{
+    content:'';position:absolute;background:var(--blue);border-radius:2px;
+  }
+  .faq-question .icon::before{width:14px;height:2px;top:10px;left:4px;}
+  .faq-question .icon::after{width:2px;height:14px;left:10px;top:4px;transition:transform .2s ease;}
+  .faq-item.open .icon::after{transform:rotate(90deg);}
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .faq-item.open .faq-answer{max-height:400px;}
+  .faq-answer p{color:var(--text-muted);padding:0 4px 18px;margin:0;font-size:0.95rem;}
+
+  /* Footer */
+  footer{
+    background:var(--footer-bg);color:var(--footer-text);padding:56px 24px 28px;
+  }
+  .footer-inner{
+    max-width:1160px;margin:0 auto;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px;
+    padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo .lg-file{color:#fff;}
+  .footer-brand .logo .lg-tools{color:var(--footer-muted);}
+  .footer-brand .logo{margin-bottom:12px;}
+  .footer-brand p{max-width:300px;color:var(--footer-muted);font-size:0.9rem;}
+  .footer-col h4{color:#fff;font-size:0.92rem;margin-bottom:14px;}
+  .footer-col ul{list-style:none;padding:0;margin:0;}
+  .footer-col li{margin-bottom:10px;}
+  .footer-col a{color:var(--footer-muted);font-size:0.88rem;transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    max-width:1160px;margin:22px auto 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    font-size:0.8rem;color:#82849f;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html#top" class="logo"><span class="lg-file">File</span><span class="lg-fix">Fix</span><span class="lg-tools">Tools</span></a>
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#tool">Compress Image</a></li>
+        <li><a href="percentage-calculator.html#tool" class="active-link">Percentage Calculator</a></li>
+        <li><a href="index.html#tool">Resize Image</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#faq" tabindex="0">More Tools
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">Image Compressor</a></li>
+            <li><a href="index.html#faq">PDF Tools</a></li>
+            <li><a href="index.html#seo">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Instant, private, in-browser calculations
+      </span>
+      <h1>Percentage <span class="grad">Calculator</span></h1>
+      <p class="subhead">Find percentages, percentage increase, decrease, and percentage change instantly — free, accurate, and processed entirely in your browser. Need to shrink an image instead? Try our <a href="index.html#tool" class="inline-link">Image Compressor</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN TOOL ============ -->
+  <section class="tool-section" id="tool">
+    <div class="container">
+      <div class="tool-card">
+
+        <!-- Calculator type tabs -->
+        <div class="calc-tabs" id="calcTabs" role="tablist" aria-label="Percentage calculator type">
+          <button type="button" class="calc-tab active" data-panel="panel-of" role="tab" aria-selected="true">X% of Y</button>
+          <button type="button" class="calc-tab" data-panel="panel-what-percent" role="tab" aria-selected="false">X is what % of Y</button>
+          <button type="button" class="calc-tab" data-panel="panel-increase" role="tab" aria-selected="false">% Increase</button>
+          <button type="button" class="calc-tab" data-panel="panel-decrease" role="tab" aria-selected="false">% Decrease</button>
+          <button type="button" class="calc-tab" data-panel="panel-change" role="tab" aria-selected="false">% Change</button>
+        </div>
+
+        <!-- Panel 1: What is X% of Y? -->
+        <div class="calc-panel active" id="panel-of">
+          <h2>What is X% of Y?</h2>
+          <p class="calc-example">Example: What is 20% of 500?</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="ofX">Percentage (X %)</label>
+              <input type="number" id="ofX" inputmode="decimal" placeholder="e.g. 20">
+            </div>
+            <div class="calc-field">
+              <label for="ofY">Of value (Y)</label>
+              <input type="number" id="ofY" inputmode="decimal" placeholder="e.g. 500">
+            </div>
+          </div>
+          <div class="calc-error" id="ofError"></div>
+          <div class="calc-actions">
+            <button type="button" class="btn btn-primary btn-block" data-calc="of">Calculate</button>
+            <button type="button" class="btn btn-secondary" data-reset="of">Reset</button>
+          </div>
+          <div class="calc-result" id="ofResult">
+            <div class="cr-label">Result</div>
+            <div class="cr-value" id="ofValue">—</div>
+            <div class="cr-detail" id="ofDetail"></div>
+            <div class="cr-actions">
+              <button type="button" class="copy-btn" data-copy="ofValue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: X is what percentage of Y? -->
+        <div class="calc-panel" id="panel-what-percent">
+          <h2>X is what percentage of Y?</h2>
+          <p class="calc-example">Example: 50 is what percent of 200?</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="wpX">Value (X)</label>
+              <input type="number" id="wpX" inputmode="decimal" placeholder="e.g. 50">
+            </div>
+            <div class="calc-field">
+              <label for="wpY">Of value (Y)</label>
+              <input type="number" id="wpY" inputmode="decimal" placeholder="e.g. 200">
+            </div>
+          </div>
+          <div class="calc-error" id="wpError"></div>
+          <div class="calc-actions">
+            <button type="button" class="btn btn-primary btn-block" data-calc="wp">Calculate</button>
+            <button type="button" class="btn btn-secondary" data-reset="wp">Reset</button>
+          </div>
+          <div class="calc-result" id="wpResult">
+            <div class="cr-label">Result</div>
+            <div class="cr-value" id="wpValue">—</div>
+            <div class="cr-detail" id="wpDetail"></div>
+            <div class="cr-actions">
+              <button type="button" class="copy-btn" data-copy="wpValue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Percentage Increase -->
+        <div class="calc-panel" id="panel-increase">
+          <h2>Percentage Increase</h2>
+          <p class="calc-example">Calculate the percentage increase from one number to another.</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="incFrom">From</label>
+              <input type="number" id="incFrom" inputmode="decimal" placeholder="e.g. 200">
+            </div>
+            <div class="calc-field">
+              <label for="incTo">To</label>
+              <input type="number" id="incTo" inputmode="decimal" placeholder="e.g. 250">
+            </div>
+          </div>
+          <div class="calc-error" id="incError"></div>
+          <div class="calc-actions">
+            <button type="button" class="btn btn-primary btn-block" data-calc="inc">Calculate</button>
+            <button type="button" class="btn btn-secondary" data-reset="inc">Reset</button>
+          </div>
+          <div class="calc-result" id="incResult">
+            <div class="cr-label">Percentage Increase</div>
+            <div class="cr-value" id="incValue">—</div>
+            <div class="cr-detail" id="incDetail"></div>
+            <div class="cr-actions">
+              <button type="button" class="copy-btn" data-copy="incValue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Percentage Decrease -->
+        <div class="calc-panel" id="panel-decrease">
+          <h2>Percentage Decrease</h2>
+          <p class="calc-example">Calculate the percentage decrease from one number to another.</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="decFrom">From</label>
+              <input type="number" id="decFrom" inputmode="decimal" placeholder="e.g. 250">
+            </div>
+            <div class="calc-field">
+              <label for="decTo">To</label>
+              <input type="number" id="decTo" inputmode="decimal" placeholder="e.g. 200">
+            </div>
+          </div>
+          <div class="calc-error" id="decError"></div>
+          <div class="calc-actions">
+            <button type="button" class="btn btn-primary btn-block" data-calc="dec">Calculate</button>
+            <button type="button" class="btn btn-secondary" data-reset="dec">Reset</button>
+          </div>
+          <div class="calc-result" id="decResult">
+            <div class="cr-label">Percentage Decrease</div>
+            <div class="cr-value" id="decValue">—</div>
+            <div class="cr-detail" id="decDetail"></div>
+            <div class="cr-actions">
+              <button type="button" class="copy-btn" data-copy="decValue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5: Percentage Change -->
+        <div class="calc-panel" id="panel-change">
+          <h2>Percentage Change</h2>
+          <p class="calc-example">Calculate the percentage difference between two numbers, including direction.</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="chgFrom">From</label>
+              <input type="number" id="chgFrom" inputmode="decimal" placeholder="e.g. 80">
+            </div>
+            <div class="calc-field">
+              <label for="chgTo">To</label>
+              <input type="number" id="chgTo" inputmode="decimal" placeholder="e.g. 100">
+            </div>
+          </div>
+          <div class="calc-error" id="chgError"></div>
+          <div class="calc-actions">
+            <button type="button" class="btn btn-primary btn-block" data-calc="chg">Calculate</button>
+            <button type="button" class="btn btn-secondary" data-reset="chg">Reset</button>
+          </div>
+          <div class="calc-result" id="chgResult">
+            <div class="cr-label">Percentage Change</div>
+            <div class="cr-value" id="chgValue">—</div>
+            <div class="cr-detail" id="chgDetail"></div>
+            <div class="cr-actions">
+              <button type="button" class="copy-btn" data-copy="chgValue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IS A PERCENTAGE ============ -->
+  <section class="section-alt" id="about-percentages">
+    <div class="container seo-content">
+      <h2>What Is a Percentage?</h2>
+      <p>A percentage is a way of expressing a number as a fraction of 100. The word itself comes from the Latin "per centum," meaning "per hundred." When you say something is 25%, you mean 25 out of every 100 — or 0.25 as a decimal. Percentages make it easy to compare proportions, track changes over time, and communicate ratios in a way that's intuitive at a glance.</p>
+      <p>Percentages show up everywhere in everyday life: discounts at the store, interest rates on loans and savings, exam scores, tax rates, tips at restaurants, and growth or decline in business metrics. Because the underlying math is always the same — a ratio scaled to 100 — a single calculator can handle all of these situations once you know which type of percentage question you're asking.</p>
+
+      <h3>The Core Percentage Formulas</h3>
+      <ul>
+        <li><strong>X% of Y:</strong> (X ÷ 100) × Y</li>
+        <li><strong>X is what percent of Y:</strong> (X ÷ Y) × 100</li>
+        <li><strong>Percentage increase:</strong> ((New − Old) ÷ Old) × 100</li>
+        <li><strong>Percentage decrease:</strong> ((Old − New) ÷ Old) × 100</li>
+        <li><strong>Percentage change:</strong> ((New − Old) ÷ Old) × 100, keeping the sign to show direction</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>How to Use the Percentage Calculator</h2>
+        <p>Three simple steps to get an instant, accurate result.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Choose a Calculation</h3>
+          <p>Pick the tab that matches what you need — a simple percentage, an increase, a decrease, or a percentage change.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Enter Your Numbers</h3>
+          <p>Type in your two values. Every input is checked instantly so you know right away if something needs fixing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Get Your Result</h3>
+          <p>See the answer immediately, then copy it to your clipboard with one click or reset to try another calculation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section-alt" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about calculating percentages with FileFixTools.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I calculate a percentage of a number?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Divide the percentage by 100, then multiply by the number. For example, 20% of 500 is (20 ÷ 100) × 500 = 100. Use the "X% of Y" tab above to calculate this instantly.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do I find what percentage one number is of another?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Divide the first number by the second, then multiply by 100. For example, 50 is what percent of 200? (50 ÷ 200) × 100 = 25%. Use the "X is what % of Y" tab for this.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between percentage increase and percentage change?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Percentage increase always assumes the new value is larger and reports a positive number. Percentage change keeps the sign, showing a positive result for an increase and a negative result for a decrease, so you can see the direction at a glance.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can this calculator handle negative numbers or decimals?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Yes. All five calculators accept decimals and negative numbers where mathematically valid, and results are rounded to two decimal places for readability.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Why do I get an error when calculating a percentage?<span class="icon"></span></button>
+          <div class="faq-answer"><p>An error usually means a field is empty, contains invalid text, or — for calculations that divide by the "from" or "of" value — that value is zero, which is mathematically undefined. Double-check both fields and try again.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is this percentage calculator free to use?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Yes, completely free with no limits, no account, and no signup required — just like every other tool on FileFixTools.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is my data sent to a server?<span class="icon"></span></button>
+          <div class="faq-answer"><p>No. Every calculation runs directly in your browser using JavaScript. Nothing you type is ever transmitted or stored anywhere.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Does FileFixTools have other free tools besides this calculator?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Yes — check out our <a href="index.html#tool">Image Compressor</a>, which compresses JPG, PNG, and WebP images to an exact target file size directly in your browser.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><span class="lg-file">File</span><span class="lg-fix">Fix</span><span class="lg-tools">Tools</span></div>
+      <p>Free online tools for images and files — fast, private, and processed entirely in your browser.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="index.html#tool">Compress Image</a></li>
+        <li><a href="percentage-calculator.html#tool">Percentage Calculator</a></li>
+        <li><a href="index.html#tool">Resize Image</a></li>
+        <li><a href="index.html#tool">Image Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#seo">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="index.html#top">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="index.html#top">Privacy Policy</a></li>
+        <li><a href="index.html#top">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> FileFixTools. All rights reserved.</span>
+    <span>Your data never leaves your device.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   FileFixTools — Percentage Calculator
+   Vanilla JS, fully client-side, no backend
+   ========================================================= */
+
+(function(){
+  'use strict';
+
+  /* ---------- Mobile nav toggle ---------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav    = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', function(){
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', function(){
+      const willOpen = !item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('open', willOpen);
+      q.setAttribute('aria-expanded', willOpen);
+    });
+  });
+
+  /* ---------- Calculator tabs ---------- */
+  const calcTabs = document.querySelectorAll('.calc-tab');
+  const calcPanels = document.querySelectorAll('.calc-panel');
+  calcTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      calcTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      calcPanels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      const target = document.getElementById(tab.dataset.panel);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  /* ---------- Helpers ---------- */
+  function parseNum(id){
+    const el = document.getElementById(id);
+    const raw = el.value.trim();
+    if (raw === '') return null;
+    const n = parseFloat(raw);
+    return isNaN(n) ? null : n;
+  }
+
+  function showCalcError(id, msg){
+    const box = document.getElementById(id);
+    box.textContent = msg;
+    box.classList.add('show');
+  }
+  function clearCalcError(id){
+    const box = document.getElementById(id);
+    box.textContent = '';
+    box.classList.remove('show');
+  }
+  function hideResult(id){
+    document.getElementById(id).classList.remove('show');
+  }
+  function formatNum(n){
+    // Round to 2 decimals, but drop trailing .00 for whole numbers
+    const rounded = Math.round(n * 100) / 100;
+    return rounded.toString();
+  }
+
+  /* ---------- Calculation handlers ---------- */
+  const calculators = {
+    of: function(){
+      clearCalcError('ofError'); hideResult('ofResult');
+      const x = parseNum('ofX'), y = parseNum('ofY');
+      if (x === null || y === null){ showCalcError('ofError', 'Please enter valid numbers in both fields.'); return; }
+      const result = (x / 100) * y;
+      document.getElementById('ofValue').textContent = formatNum(result);
+      document.getElementById('ofDetail').textContent = x + '% of ' + y + ' is ' + formatNum(result) + '.';
+      document.getElementById('ofResult').classList.add('show');
+    },
+    wp: function(){
+      clearCalcError('wpError'); hideResult('wpResult');
+      const x = parseNum('wpX'), y = parseNum('wpY');
+      if (x === null || y === null){ showCalcError('wpError', 'Please enter valid numbers in both fields.'); return; }
+      if (y === 0){ showCalcError('wpError', 'The second value (Y) cannot be zero.'); return; }
+      const result = (x / y) * 100;
+      document.getElementById('wpValue').textContent = formatNum(result) + '%';
+      document.getElementById('wpDetail').textContent = x + ' is ' + formatNum(result) + '% of ' + y + '.';
+      document.getElementById('wpResult').classList.add('show');
+    },
+    inc: function(){
+      clearCalcError('incError'); hideResult('incResult');
+      const from = parseNum('incFrom'), to = parseNum('incTo');
+      if (from === null || to === null){ showCalcError('incError', 'Please enter valid numbers in both fields.'); return; }
+      if (from === 0){ showCalcError('incError', 'The "From" value cannot be zero.'); return; }
+      const result = ((to - from) / from) * 100;
+      document.getElementById('incValue').textContent = formatNum(result) + '%';
+      document.getElementById('incDetail').textContent = 'Going from ' + from + ' to ' + to + ' is a ' + formatNum(result) + '% change.' + (result < 0 ? ' Note: this is actually a decrease.' : '');
+      document.getElementById('incResult').classList.add('show');
+    },
+    dec: function(){
+      clearCalcError('decError'); hideResult('decResult');
+      const from = parseNum('decFrom'), to = parseNum('decTo');
+      if (from === null || to === null){ showCalcError('decError', 'Please enter valid numbers in both fields.'); return; }
+      if (from === 0){ showCalcError('decError', 'The "From" value cannot be zero.'); return; }
+      const result = ((from - to) / from) * 100;
+      document.getElementById('decValue').textContent = formatNum(result) + '%';
+      document.getElementById('decDetail').textContent = 'Going from ' + from + ' to ' + to + ' is a ' + formatNum(result) + '% decrease.' + (result < 0 ? ' Note: this is actually an increase.' : '');
+      document.getElementById('decResult').classList.add('show');
+    },
+    chg: function(){
+      clearCalcError('chgError'); hideResult('chgResult');
+      const from = parseNum('chgFrom'), to = parseNum('chgTo');
+      if (from === null || to === null){ showCalcError('chgError', 'Please enter valid numbers in both fields.'); return; }
+      if (from === 0){ showCalcError('chgError', 'The "From" value cannot be zero.'); return; }
+      const result = ((to - from) / from) * 100;
+      const direction = result > 0 ? 'increase' : (result < 0 ? 'decrease' : 'no change');
+      document.getElementById('chgValue').textContent = (result > 0 ? '+' : '') + formatNum(result) + '%';
+      document.getElementById('chgDetail').textContent = 'Going from ' + from + ' to ' + to + ' is a ' + formatNum(Math.abs(result)) + '% ' + direction + '.';
+      document.getElementById('chgResult').classList.add('show');
+    }
+  };
+
+  document.querySelectorAll('[data-calc]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const key = btn.dataset.calc;
+      if (calculators[key]) calculators[key]();
+    });
+  });
+
+  /* ---------- Instant calculation while typing ---------- */
+  document.querySelectorAll('.calc-field input[type="number"]').forEach(function(input){
+    input.addEventListener('input', function(){
+      const panel = input.closest('.calc-panel');
+      if (!panel) return;
+      const calcBtn = panel.querySelector('[data-calc]');
+      if (!calcBtn) return;
+      const key = calcBtn.dataset.calc;
+      // Only auto-calculate once both fields in this panel have a value
+      const fields = panel.querySelectorAll('.calc-field input[type="number"]');
+      const allFilled = Array.prototype.every.call(fields, function(f){ return f.value.trim() !== ''; });
+      if (allFilled && calculators[key]) calculators[key]();
+    });
+  });
+
+  /* ---------- Reset buttons ---------- */
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const key = btn.dataset.reset;
+      const panel = btn.closest('.calc-panel');
+      if (!panel) return;
+      panel.querySelectorAll('input[type="number"]').forEach(function(f){ f.value = ''; });
+      const errorMap = { of:'ofError', wp:'wpError', inc:'incError', dec:'decError', chg:'chgError' };
+      const resultMap = { of:'ofResult', wp:'wpResult', inc:'incResult', dec:'decResult', chg:'chgResult' };
+      if (errorMap[key]) clearCalcError(errorMap[key]);
+      if (resultMap[key]) hideResult(resultMap[key]);
+    });
+  });
+
+  /* ---------- Copy result buttons ---------- */
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const targetId = btn.dataset.copy;
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const text = el.textContent;
+
+      function markCopied(){
+        const originalHTML = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Copied!';
+        setTimeout(function(){
+          btn.classList.remove('copied');
+          btn.innerHTML = originalHTML;
+        }, 1600);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(markCopied).catch(function(){
+          fallbackCopy(text, markCopied);
+        });
+      } else {
+        fallbackCopy(text, markCopied);
+      }
+    });
+  });
+
+  function fallbackCopy(text, onDone){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) { /* ignore */ }
+    document.body.removeChild(ta);
+    if (onDone) onDone();
+  }
+
+  /* ---------- Footer year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+})();
+</script>
+
+<script>
+/* =========================================================
+   Theme (dark mode) toggle — purely presentational, additive.
+   Matches the behavior used on the Image Compressor page.
+   ========================================================= */
+(function(){
+  'use strict';
+  var root = document.documentElement;
+  var toggleBtn = document.getElementById('themeToggle');
+  var STORAGE_KEY = 'filefixtools-theme';
+
+  function applyTheme(theme){
+    if (theme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (err) { /* storage unavailable */ }
+
+  if (saved === 'dark' || saved === 'light') {
+    applyTheme(saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (err) { /* storage unavailable */ }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
