@@ -589,6 +589,14 @@
               <div class="value green" id="statCompressedSize">—</div>
             </div>
             <div class="result-stat">
+              <div class="label">Target size</div>
+              <div class="value" id="statTargetSize">—</div>
+            </div>
+            <div class="result-stat">
+              <div class="label">Accuracy</div>
+              <div class="value green" id="statAccuracy">—</div>
+            </div>
+            <div class="result-stat">
               <div class="label">Original dimensions</div>
               <div class="value" id="statOriginalDim">—</div>
             </div>
@@ -856,6 +864,8 @@
   const resultPreviewImg   = document.getElementById('resultPreviewImg');
   const statOriginalSize   = document.getElementById('statOriginalSize');
   const statCompressedSize = document.getElementById('statCompressedSize');
+  const statTargetSize     = document.getElementById('statTargetSize');
+  const statAccuracy       = document.getElementById('statAccuracy');
   const statOriginalDim    = document.getElementById('statOriginalDim');
   const statOutputDim      = document.getElementById('statOutputDim');
   const statReduction      = document.getElementById('statReduction');
@@ -1074,77 +1084,215 @@
   }
 
   /**
-   * Iteratively searches quality levels (and, if needed, reduced dimensions)
-   * to get the encoded blob as close as possible to targetBytes without
-   * exceeding it. Returns the best {blob, width, height, quality} found.
+   * Runs a high-precision binary search over quality (0.01..1.0) at a FIXED
+   * width/height, looking for the LARGEST encoded blob that is still
+   * <= targetBytes. This never stops at the first fit it finds — it keeps
+   * narrowing the [lo, hi] window for the full iteration budget so the
+   * final answer sits as close under the target as the JPEG/WebP encoder's
+   * own quantization steps allow.
+   *
+   * Returns:
+   *   { bestUnder: {blob,width,height,quality} | null,  -> best fit AT/UNDER target
+   *     smallest:  {blob,width,height,quality} }          -> smallest blob seen (fallback)
+   */
+  async function binarySearchQuality(img, width, height, outputMime, targetBytes, onStep){
+    const MIN_Q = 0.01;
+    const MAX_Q = 1.0;
+    const ITERATIONS = 28; // >= 25 required; narrows the quality window to ~1 / 250,000,000
+
+    // Establish the floor: does the lowest possible quality even fit under target?
+    let floorBlob;
+    try {
+      floorBlob = await canvasEncode(img, width, height, outputMime, MIN_Q);
+    } catch (err) {
+      return { bestUnder: null, smallest: null };
+    }
+    const smallest = { blob: floorBlob, width: width, height: height, quality: MIN_Q };
+
+    if (floorBlob.size > targetBytes){
+      // Even the smallest possible file at this resolution is too big —
+      // no fit is possible here; caller must reduce dimensions.
+      return { bestUnder: null, smallest: smallest };
+    }
+
+    let bestUnder = { blob: floorBlob, width: width, height: height, quality: MIN_Q };
+    if (onStep) onStep(MIN_Q, floorBlob.size);
+
+    // Quick check: does MAXIMUM quality already fit under the target?
+    // If so, that IS the best possible result at this resolution (largest
+    // file we can produce that still stays within budget) — no search needed.
+    let ceilBlob;
+    try {
+      ceilBlob = await canvasEncode(img, width, height, outputMime, MAX_Q);
+    } catch (err) {
+      ceilBlob = null;
+    }
+    if (onStep && ceilBlob) onStep(MAX_Q, ceilBlob.size);
+    if (ceilBlob && ceilBlob.size <= targetBytes){
+      return { bestUnder: { blob: ceilBlob, width: width, height: height, quality: MAX_Q }, smallest: smallest };
+    }
+
+    // Full binary search between MIN_Q (known to fit) and MAX_Q (known too big).
+    // Every iteration either raises the floor (found a bigger fit) or lowers
+    // the ceiling (too big) — the LARGEST fitting blob seen is always kept,
+    // and the search only stops once quality precision is exhausted or the
+    // iteration budget runs out. It never exits early on the first fit.
+    let lo = MIN_Q;
+    let hi = MAX_Q;
+    for (let i = 0; i < ITERATIONS; i++){
+      const mid = (lo + hi) / 2;
+
+      let blob;
+      try {
+        blob = await canvasEncode(img, width, height, outputMime, mid);
+      } catch (err) {
+        break;
+      }
+
+      if (onStep) onStep(mid, blob.size);
+
+      if (blob.size <= targetBytes){
+        // Fits under target. Keep it only if it's a NEW largest-under-target
+        // result, then keep pushing quality UP to try to land even closer.
+        if (blob.size > bestUnder.blob.size){
+          bestUnder = { blob: blob, width: width, height: height, quality: mid };
+        }
+        lo = mid;
+      } else {
+        // Too big — pull the ceiling down and try lower quality.
+        hi = mid;
+      }
+
+      // Stop once the quality window has converged past the encoder's own
+      // precision — further iterations cannot change the achievable byte count.
+      if (hi - lo < 0.00005) break;
+    }
+
+    return { bestUnder: bestUnder, smallest: smallest };
+  }
+
+  /**
+   * Finds the LARGEST possible output that stays at or below targetBytes.
+   *
+   * This is a true two-stage optimization search — not a fixed list of
+   * guesses — so it consistently lands within a fraction of a percent of
+   * the requested target whenever that is technically achievable:
+   *
+   *   Stage 1 — Quality-only search at ORIGINAL resolution.
+   *     If any quality level fits under the target at full size, that is
+   *     already the best possible answer (maximum detail retained, and the
+   *     28-iteration binary search converges to within the encoder's finest
+   *     quantization step of the target). Done.
+   *
+   *   Stage 2 — Binary search the SCALE itself.
+   *     If even quality 0.01 at full resolution is still too large, the
+   *     image must be downscaled. Rather than jumping through a coarse,
+   *     fixed list of scale factors (which can skip right over the ideal
+   *     size), we binary-search the scale factor to find the LARGEST
+   *     resolution at which the target becomes reachable at all (i.e. the
+   *     boundary where floor-quality output first fits under the target).
+   *
+   *   Stage 3 — Quality search at that exact resolution.
+   *     Re-run the full 28-iteration quality binary search at the resolution
+   *     found in Stage 2, to fill the remaining byte budget as closely as
+   *     possible without exceeding it.
+   *
+   * A 0.5% safety tolerance is applied to the target so encoder/rounding
+   * noise can never push the final file size over the requested limit.
    */
   async function compressToTarget(img, targetBytes, outputMime, onProgress){
     const origW = img.naturalWidth;
     const origH = img.naturalHeight;
 
-    // Quality levels to try, high to low (binary-search-like sweep)
-    const qualitySteps = [0.92,0.85,0.78,0.7,0.62,0.55,0.48,0.4,0.32,0.25,0.18,0.12,0.08,0.05];
-    // Dimension scale factors to try if quality alone isn't enough
-    const scaleSteps = [1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.22, 0.15, 0.1];
+    // Safety tolerance: land within ~0.5% under the target (never over).
+    const safetyTargetBytes = Math.max(1, Math.floor(targetBytes * 0.995));
 
-    let best = null; // best result under target
-    let smallestOverall = null; // smallest result overall (fallback if nothing fits under target)
+    // ---------- Stage 1: quality-only search at full resolution ----------
+    if (onProgress) onProgress(3, 'Testing full resolution…');
 
-    const totalAttempts = qualitySteps.length * scaleSteps.length;
-    let attempt = 0;
-
-    for (let s = 0; s < scaleSteps.length; s++){
-      const scale = scaleSteps[s];
-      const w = Math.max(1, Math.round(origW * scale));
-      const h = Math.max(1, Math.round(origH * scale));
-
-      let foundAtThisScale = false;
-
-      for (let q = 0; q < qualitySteps.length; q++){
-        attempt++;
-        const quality = qualitySteps[q];
-
-        // Report progress (reserve last 10% for finalizing)
-        const pct = Math.min(90, (attempt / totalAttempts) * 90);
-        if (onProgress) onProgress(pct, 'Testing quality ' + Math.round(quality*100) + '% at ' + w + '×' + h + 'px…');
-
-        let blob;
-        try {
-          blob = await canvasEncode(img, w, h, outputMime, quality);
-        } catch (err) {
-          continue; // skip failed attempts
-        }
-
-        // Track the smallest result overall, in case nothing meets target
-        if (!smallestOverall || blob.size < smallestOverall.blob.size){
-          smallestOverall = { blob: blob, width: w, height: h, quality: quality };
-        }
-
-        if (blob.size <= targetBytes){
-          // Keep the LARGEST blob that still fits under target (best quality within budget)
-          if (!best || blob.size > best.blob.size){
-            best = { blob: blob, width: w, height: h, quality: quality };
-          }
-          foundAtThisScale = true;
-          // Once we found a fit at this scale with highest quality tried so far,
-          // no need to try lower qualities at this same scale (they'd just be smaller/worse).
-          break;
-        }
+    const fullRes = await binarySearchQuality(
+      img, origW, origH, outputMime, safetyTargetBytes,
+      function(q, size){
+        if (onProgress) onProgress(Math.min(55, 3 + q * 50), 'Testing quality ' + Math.round(q*100) + '% at ' + origW + '×' + origH + 'px (' + formatBytes(size) + ')…');
       }
+    );
 
-      // If we already found a good-quality fit, stop reducing dimensions further.
-      if (foundAtThisScale && best && best.quality >= 0.5){
-        break;
-      }
-      // If we found ANY fit at all, we can stop — further downscaling would only reduce quality unnecessarily.
-      if (foundAtThisScale) break;
+    if (fullRes.bestUnder){
+      if (onProgress) onProgress(97, 'Finalizing result…');
+      return { result: fullRes.bestUnder, achievedTarget: true };
     }
 
-    if (onProgress) onProgress(95, 'Finalizing result…');
+    // ---------- Stage 2: full resolution can't reach target even at floor ----------
+    // ---------- quality — binary-search the scale factor itself ----------
+    if (onProgress) onProgress(58, 'Image too large for target — optimizing dimensions…');
 
-    if (best) return { result: best, achievedTarget: true };
-    // Could not get under target even at smallest size/quality — return the smallest we found
-    return { result: smallestOverall, achievedTarget: false };
+    let loScale = 0.02;   // smallest scale we're willing to try
+    let hiScale = 1.0;    // known to fail (Stage 1 already ruled this out)
+    let bestScale = null; // largest scale confirmed to fit at floor quality
+
+    const SCALE_ITERATIONS = 16;
+    for (let i = 0; i < SCALE_ITERATIONS; i++){
+      const midScale = (loScale + hiScale) / 2;
+      const w = Math.max(1, Math.round(origW * midScale));
+      const h = Math.max(1, Math.round(origH * midScale));
+
+      if (onProgress) onProgress(58 + (i / SCALE_ITERATIONS) * 25, 'Optimizing dimensions… trying ' + w + '×' + h + 'px…');
+
+      let floorBlob;
+      try {
+        floorBlob = await canvasEncode(img, w, h, outputMime, 0.01);
+      } catch (err) {
+        hiScale = midScale;
+        continue;
+      }
+
+      if (floorBlob.size <= safetyTargetBytes){
+        // This resolution fits — remember it and try a LARGER (less-shrunk) scale.
+        bestScale = midScale;
+        loScale = midScale;
+      } else {
+        // Still too big even at floor quality — shrink further.
+        hiScale = midScale;
+      }
+    }
+
+    if (!bestScale){
+      // Could not fit even at the smallest scale we're willing to try —
+      // return the smallest possible result as an honest fallback.
+      const w = Math.max(1, Math.round(origW * loScale));
+      const h = Math.max(1, Math.round(origH * loScale));
+      let floorBlob = null;
+      try {
+        floorBlob = await canvasEncode(img, w, h, outputMime, 0.01);
+      } catch (err) { /* fall through to fullRes.smallest below */ }
+
+      if (onProgress) onProgress(97, 'Finalizing result…');
+      if (floorBlob){
+        return { result: { blob: floorBlob, width: w, height: h, quality: 0.01 }, achievedTarget: false };
+      }
+      return { result: fullRes.smallest, achievedTarget: false };
+    }
+
+    // ---------- Stage 3: fine quality binary search at the found scale ----------
+    const finalW = Math.max(1, Math.round(origW * bestScale));
+    const finalH = Math.max(1, Math.round(origH * bestScale));
+
+    if (onProgress) onProgress(85, 'Fine-tuning quality at ' + finalW + '×' + finalH + 'px…');
+
+    const finalRes = await binarySearchQuality(
+      img, finalW, finalH, outputMime, safetyTargetBytes,
+      function(q, size){
+        if (onProgress) onProgress(Math.min(96, 85 + q * 10), 'Testing quality ' + Math.round(q*100) + '% at ' + finalW + '×' + finalH + 'px (' + formatBytes(size) + ')…');
+      }
+    );
+
+    if (onProgress) onProgress(97, 'Finalizing result…');
+
+    if (finalRes.bestUnder){
+      return { result: finalRes.bestUnder, achievedTarget: true };
+    }
+    // Extremely unlikely fallback (scale search boundary was imprecise).
+    return { result: finalRes.smallest || fullRes.smallest, achievedTarget: false };
   }
 
   /* =========================================================
@@ -1219,11 +1367,21 @@
     resultPreviewImg.src = url;
     statOriginalSize.textContent = formatBytes(currentFile.size);
     statCompressedSize.textContent = formatBytes(blob.size);
+    statTargetSize.textContent = formatBytes(targetBytes);
     statOriginalDim.textContent = originalDims.w + ' × ' + originalDims.h + ' px';
     statOutputDim.textContent = result.width + ' × ' + result.height + ' px';
 
     const reductionPct = ((1 - (blob.size / currentFile.size)) * 100);
     statReduction.textContent = (reductionPct > 0 ? reductionPct.toFixed(1) : '0') + '% smaller';
+
+    // Accuracy: how close the compressed size landed to the requested target
+    // (only meaningful when the target was actually reached without exceeding it).
+    if (achievedTarget){
+      const accuracyPct = (blob.size / targetBytes) * 100;
+      statAccuracy.textContent = accuracyPct.toFixed(1) + '%';
+    } else {
+      statAccuracy.textContent = 'N/A';
+    }
 
     // Warning if we couldn't get under the target size
     if (!achievedTarget){
@@ -1283,4 +1441,4 @@
 </script>
 
 </body>
-</html>
+  </html>
