@@ -458,6 +458,23 @@
   .faq-item.open .faq-answer{max-height:400px;}
   .faq-answer p{color:var(--text-muted);padding:0 4px 18px;margin:0;font-size:0.95rem;}
 
+  /* ---------- More Free Tools ---------- */
+  .tools-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;
+  }
+  @media (max-width:800px){ .tools-grid{grid-template-columns:1fr;} }
+  .tool-promo-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:28px 24px;text-align:center;
+    box-shadow:var(--shadow-sm);
+    display:flex;flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .tool-promo-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .tool-promo-card h3{font-size:1.1rem;}
+  .tool-promo-card p{color:var(--text-muted);font-size:0.92rem;margin:0 0 22px;flex:1;}
+  .tool-promo-card .btn{margin-top:auto;}
+
   /* Footer */
   footer{
     background:var(--footer-bg);color:var(--footer-text);padding:56px 24px 28px;
@@ -840,6 +857,37 @@
     <div class="container">
       <div class="disclaimer-box">
         <strong>Disclaimer:</strong> This mortgage calculator provides estimates for informational and planning purposes only. Results are not a loan offer, pre-approval, or guarantee of terms, and may differ from figures provided by a lender. FileFixTools is not a mortgage lender or financial advisor — please consult a licensed mortgage professional or financial advisor before making any borrowing decisions.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MORE FREE TOOLS ============ -->
+  <section id="more-tools">
+    <div class="container">
+      <div class="section-head">
+        <h2>More Free Tools</h2>
+        <p>Explore more free, private, in-browser tools from FileFixTools.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-promo-card">
+          <h3>Image Compressor</h3>
+          <p>Compress JPG, PNG, and WebP images to any exact target file size.</p>
+          <a href="./index.html" class="btn btn-primary">Try Image Compressor</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages, percentage increase, decrease, and percentage change instantly.</p>
+          <a href="./percentage-calculator.html" class="btn btn-primary">Try Percentage Calculator</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <h3>Loan Calculator</h3>
+          <p>Calculate your monthly loan payment, total interest, payoff time, and view a detailed amortization schedule.</p>
+          <a href="./loan-calculator.html" class="btn btn-primary">Try Loan Calculator</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1301,4 +1349,4 @@
 </script>
 
 </body>
-</html>
+                  </html>
