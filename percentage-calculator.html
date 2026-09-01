@@ -412,6 +412,36 @@
   .faq-item.open .faq-answer{max-height:400px;}
   .faq-answer p{color:var(--text-muted);padding:0 4px 18px;margin:0;font-size:0.95rem;}
 
+  /* ---------- More Tools ---------- */
+  .more-tools-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;
+  }
+  @media (max-width:900px){ .more-tools-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .more-tools-grid{grid-template-columns:1fr;} }
+  .tool-promo-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:26px;display:flex;flex-direction:column;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .tool-promo-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .tool-promo-icon{
+    width:46px;height:46px;border-radius:12px;background:var(--gradient);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    box-shadow:0 10px 24px rgba(79,107,246,0.30);
+  }
+  .tool-promo-icon svg{width:22px;height:22px;stroke:#fff;}
+  .tool-promo-card h3{font-size:1.08rem;}
+  .tool-promo-card p{color:var(--text-muted);font-size:0.9rem;margin:0 0 20px;flex:1;}
+  .tool-promo-card .btn{margin-top:auto;}
+  .tool-promo-card.coming-soon{opacity:0.6;}
+  .tool-promo-badge{
+    display:inline-flex;align-items:center;
+    background:var(--gradient-soft);color:var(--blue);
+    font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:.04em;
+    padding:4px 10px;border-radius:999px;margin-bottom:12px;width:fit-content;
+  }
+
   /* Footer */
   footer{
     background:var(--footer-bg);color:var(--footer-text);padding:56px 24px 28px;
@@ -757,6 +787,42 @@
           <div class="faq-answer"><p>Yes — check out our <a href="index.html#tool">Image Compressor</a>, which compresses JPG, PNG, and WebP images to an exact target file size directly in your browser.</p></div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MORE TOOLS ============ -->
+  <section class="section-alt" id="more-tools">
+    <div class="container">
+      <div class="section-head">
+        <h2>More Free Tools</h2>
+        <p>More browser-based tools from FileFixTools — free, private, and no signup required.</p>
+      </div>
+      <div class="more-tools-grid">
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          </div>
+          <h3>Image Compressor</h3>
+          <p>Compress JPG, PNG, and WebP images to any exact target file size.</p>
+          <a class="btn btn-primary btn-block" href="./index.html">Try Image Compressor</a>
+        </div>
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <span style="font-size:22px;line-height:1;" aria-hidden="true">🏠</span>
+          </div>
+          <h3>Mortgage Calculator</h3>
+          <p>Estimate your monthly mortgage payment including principal, interest, taxes, insurance, PMI, and HOA fees.</p>
+          <a class="btn btn-primary btn-block" href="./mortgage-calculator.html">Try Mortgage Calculator</a>
+        </div>
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <span style="font-size:22px;line-height:1;" aria-hidden="true">💰</span>
+          </div>
+          <h3>Loan Calculator</h3>
+          <p>Calculate your monthly loan payment, total interest, payoff time, and view a detailed amortization schedule.</p>
+          <a class="btn btn-primary btn-block" href="./loan-calculator.html">Try Loan Calculator</a>
+        </div>
       </div>
     </div>
   </section>
