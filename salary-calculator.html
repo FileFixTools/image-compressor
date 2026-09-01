@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Salary Calculator | Hourly, Monthly & Annual Pay | FileFixTools</title>
+
+<meta name="description" content="Calculate your hourly, weekly, monthly, biweekly, and annual salary instantly with our free online salary calculator.">
+
+<meta name="keywords" content="salary calculator, hourly salary calculator, annual salary calculator, monthly salary calculator, paycheck calculator, wage calculator">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://filefixtools.github.io/image-compressor/salary-calculator.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Salary Calculator | Hourly, Monthly & Annual Pay | FileFixTools">
+<meta property="og:description" content="Calculate your hourly, weekly, monthly, biweekly, and annual salary instantly with our free online salary calculator.">
+<meta property="og:url" content="https://filefixtools.github.io/image-compressor/salary-calculator.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Salary Calculator | FileFixTools">
+<meta name="twitter:description" content="Calculate hourly, weekly, biweekly, monthly, and annual pay — free, instant, and private, right in your browser.">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f7fb;
+    --card-bg:#ffffff;
+    --text:#161726;
+    --text-muted:#5c5f77;
+    --border:#e7e9f2;
+    --blue:#4f6bf6;
+    --purple:#8b5cf6;
+    --gradient: linear-gradient(135deg, #4f6bf6 0%, #8b5cf6 100%);
+    --gradient-soft: linear-gradient(135deg, rgba(79,107,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+    --success:#16a34a;
+    --success-soft: rgba(22,163,74,0.10);
+    --danger:#dc2626;
+    --header-bg: rgba(255,255,255,0.82);
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 2px 10px rgba(20,20,50,0.05);
+    --shadow-md: 0 10px 30px rgba(20,20,50,0.08);
+    --shadow-lg: 0 24px 60px rgba(20,20,50,0.12);
+    --footer-bg:#12132a;
+    --footer-text:#c7c9dd;
+    --footer-muted:#9698b8;
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"]{
+    --bg:#0b0c16;
+    --bg-soft:#12131f;
+    --card-bg:#161826;
+    --text:#f1f2fa;
+    --text-muted:#a4a6c2;
+    --border:#262841;
+    --gradient-soft: linear-gradient(135deg, rgba(79,107,246,0.16) 0%, rgba(139,92,246,0.16) 100%);
+    --success-soft: rgba(22,163,74,0.16);
+    --header-bg: rgba(11,12,22,0.78);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.28);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.34);
+    --shadow-lg: 0 24px 60px rgba(0,0,0,0.45);
+    --footer-bg:#08091380;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em 0;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:100;
+    background:var(--header-bg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1160px;margin:0 auto;
+    gap:16px;
+  }
+  .logo{
+    display:inline-flex;align-items:baseline;gap:1px;
+    font-weight:800;font-size:1.32rem;letter-spacing:-0.02em;
+    flex-shrink:0;
+  }
+  .logo .lg-file{color:var(--text);}
+  .logo .lg-fix{
+    background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .logo .lg-tools{color:var(--text-muted);font-weight:700;font-size:0.85em;margin-left:2px;}
+
+  nav.main-nav{flex:1;display:flex;justify-content:center;}
+  nav.main-nav ul{
+    list-style:none;display:flex;align-items:center;gap:8px;margin:0;padding:0;
+  }
+  nav.main-nav a{
+    font-weight:600;font-size:0.92rem;color:var(--text-muted);
+    transition:color .2s ease, background .2s ease;
+    padding:9px 14px;border-radius:10px;
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  nav.main-nav a:hover, nav.main-nav a:focus-visible{color:var(--blue);background:var(--gradient-soft);}
+  nav.main-nav a.active-link{color:var(--blue);background:var(--gradient-soft);}
+  nav.main-nav li.has-dropdown{position:relative;}
+  nav.main-nav .caret{width:9px;height:9px;flex-shrink:0;opacity:0.6;}
+  .dropdown-menu{
+    list-style:none;margin:0;padding:8px;
+    position:absolute;top:calc(100% + 6px);left:0;min-width:180px;
+    background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+    box-shadow:var(--shadow-md);
+    opacity:0;visibility:hidden;transform:translateY(6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  }
+  nav.main-nav li.has-dropdown:hover .dropdown-menu,
+  nav.main-nav li.has-dropdown:focus-within .dropdown-menu{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .dropdown-menu li a{display:block;padding:9px 12px;border-radius:8px;font-size:0.9rem;}
+
+  .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+  .theme-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:10px;
+    background:var(--bg-soft);border:1px solid var(--border);
+    color:var(--text);transition:background .2s ease, transform .15s ease;
+  }
+  .theme-toggle:hover{background:var(--gradient-soft);}
+  .theme-toggle svg{width:18px;height:18px;}
+  .theme-toggle .icon-moon{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-sun{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
+
+  .menu-toggle{
+    display:none;background:none;border:none;padding:8px;border-radius:8px;
+  }
+  .menu-toggle span{
+    display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.open span:nth-child(2){opacity:0;}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:860px){
+    nav.main-nav{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--card-bg);border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow-md);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+      justify-content:flex-start;
+    }
+    nav.main-nav.open{max-height:420px;overflow-y:auto;}
+    nav.main-nav ul{flex-direction:column;align-items:stretch;padding:12px 20px 18px;gap:2px;}
+    nav.main-nav a{display:block;padding:12px 10px;border-radius:8px;}
+    .dropdown-menu{
+      position:static;opacity:1;visibility:visible;transform:none;
+      box-shadow:none;border:none;background:none;padding:0 0 0 14px;margin-top:2px;
+    }
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 24px 54px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(79,107,246,0.10), transparent 45%),
+      radial-gradient(circle at 80% 10%, rgba(139,92,246,0.10), transparent 45%);
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gradient-soft);
+    color:var(--blue);
+    font-weight:600;font-size:0.85rem;
+    padding:8px 16px;border-radius:999px;
+    margin-bottom:22px;
+    border:1px solid rgba(79,107,246,0.2);
+  }
+  .badge svg{width:16px;height:16px;flex-shrink:0;}
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.3rem);
+    font-weight:800;
+    letter-spacing:-0.03em;
+    max-width:760px;margin:0 auto 18px;
+  }
+  .hero h1 .grad{
+    background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.subhead{
+    max-width:640px;margin:0 auto;
+    font-size:1.1rem;color:var(--text-muted);
+  }
+  .hero .inline-link{
+    color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;
+  }
+
+  /* ---------- Tool Card ---------- */
+  .tool-section{padding:36px 24px 80px;}
+  .tool-card{
+    max-width:980px;margin:0 auto;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+    padding:36px;
+    position:relative;
+    overflow:hidden;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  @media (max-width:600px){ .tool-card{padding:22px 16px;border-radius:var(--radius-md);} }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border:none;border-radius:12px;
+    font-weight:700;font-size:0.95rem;
+    padding:13px 26px;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--gradient);color:#fff;
+    box-shadow:0 10px 24px rgba(79,107,246,0.30);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,107,246,0.38);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-secondary{
+    background:var(--bg-soft);color:var(--text);border:1px solid var(--border);
+  }
+  .btn-secondary:hover{background:var(--gradient-soft);border-color:rgba(79,107,246,0.3);}
+  .btn-lg{padding:16px 28px;font-size:1rem;border-radius:14px;}
+  .btn-block{width:100%;}
+
+  /* ---------- Salary form ---------- */
+  .form-section-title{
+    font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--text-muted);margin:26px 0 14px;
+  }
+  .form-section-title:first-of-type{margin-top:0;}
+  .mc-fields{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  @media (max-width:640px){ .mc-fields{grid-template-columns:1fr;} }
+  .mc-field label{
+    display:block;font-weight:700;font-size:0.85rem;margin-bottom:8px;
+  }
+  .mc-field .unit-input{
+    display:flex;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;
+    transition:border-color .2s ease, box-shadow .2s ease;
+    background:var(--card-bg);
+  }
+  .mc-field .unit-input:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px var(--gradient-soft);}
+  .mc-field .unit-input span{
+    display:flex;align-items:center;padding:0 12px;
+    background:var(--bg-soft);color:var(--text-muted);font-weight:700;font-size:0.9rem;
+    border-right:1.5px solid var(--border);
+  }
+  .mc-field .unit-input span.suffix{border-right:none;border-left:1.5px solid var(--border);}
+  .mc-field input[type="number"], .mc-field select{
+    flex:1;width:100%;
+    padding:13px 14px;border:none;background:transparent;
+    font-size:1rem;font-weight:600;color:var(--text);
+  }
+  .mc-field input[type="number"]:focus, .mc-field select:focus{outline:none;}
+  .mc-field select{cursor:pointer;}
+  .mc-hint{font-size:0.78rem;color:var(--text-muted);margin-top:6px;}
+
+  .mc-actions{display:flex;gap:12px;margin:28px 0 6px;}
+  @media (max-width:480px){ .mc-actions{flex-direction:column;} }
+
+  .mc-error{
+    display:none;
+    margin-bottom:18px;
+    background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.25);color:#a12626;
+    padding:12px 14px;border-radius:12px;font-size:0.88rem;font-weight:600;
+  }
+  html[data-theme="dark"] .mc-error{ color:#ff9b9b; }
+  .mc-error.show{display:block;}
+
+  /* Results */
+  .mc-results{
+    display:none;
+    margin-top:30px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    background:var(--bg-soft);
+    padding:28px;
+    animation:fadeIn .4s ease;
+  }
+  .mc-results.show{display:block;}
+  .mc-hero-stat{
+    text-align:center;
+    background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px;
+  }
+  .mc-hero-stat .label{font-size:0.8rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .mc-hero-stat .value{font-size:2.4rem;font-weight:800;margin-top:6px;
+    background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .mc-hero-stat .sub{color:var(--text-muted);font-size:0.88rem;margin-top:6px;}
+
+  .mc-stat-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;
+  }
+  @media (max-width:700px){ .mc-stat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:420px){ .mc-stat-grid{grid-template-columns:1fr;} }
+  .mc-stat{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .mc-stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+  .mc-stat .label{font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+  .mc-stat .value{font-size:1.08rem;font-weight:800;margin-top:5px;}
+  .mc-stat .value.green{color:var(--success);}
+
+  .mc-savings-note{
+    background:var(--success-soft);border:1px solid rgba(22,163,74,0.30);color:var(--success);
+    padding:14px 16px;border-radius:12px;font-size:0.88rem;font-weight:600;margin-bottom:20px;
+  }
+
+  .mc-result-actions{display:flex;gap:12px;margin-bottom:6px;}
+  @media (max-width:480px){ .mc-result-actions{flex-direction:column;} }
+  .copy-btn{
+    background:var(--card-bg);border:1.5px solid var(--border);color:var(--text);
+    font-weight:700;font-size:0.9rem;padding:12px 20px;border-radius:12px;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:all .15s ease;
+  }
+  .copy-btn:hover{border-color:var(--blue);color:var(--blue);}
+  .copy-btn svg{width:14px;height:14px;}
+  .copy-btn.copied{border-color:var(--success);color:var(--success);}
+
+  @keyframes fadeIn{ from{opacity:0;transform:translateY(6px);} to{opacity:1;transform:translateY(0);} }
+
+  /* ---------- Generic Sections ---------- */
+  section{padding:76px 24px;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 46px;}
+  .section-head h2{font-size:clamp(1.55rem,3.5vw,2.2rem);letter-spacing:-0.02em;}
+  .section-head p{color:var(--text-muted);font-size:1.02rem;}
+  .section-alt{background:var(--bg-soft);}
+
+  /* How to Use */
+  .steps-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;
+  }
+  @media (max-width:800px){ .steps-grid{grid-template-columns:1fr;} }
+  .step-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:28px 24px;text-align:center;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .step-num{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--gradient);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.05rem;
+  }
+  .step-card h3{font-size:1.1rem;}
+  .step-card p{color:var(--text-muted);font-size:0.92rem;margin:0;}
+
+  /* SEO content */
+  .seo-content{max-width:820px;margin:0 auto;}
+  .seo-content h2{font-size:1.65rem;margin-top:0;}
+  .seo-content h3{font-size:1.18rem;margin-top:34px;}
+  .seo-content p{color:var(--text-muted);font-size:1rem;margin-bottom:16px;}
+  .seo-content ul{color:var(--text-muted);padding-left:22px;}
+  .seo-content li{margin-bottom:8px;}
+  .seo-content a{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+
+  .disclaimer-box{
+    max-width:820px;margin:0 auto;
+    background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;
+    padding:18px 20px;font-size:0.88rem;color:var(--text-muted);
+  }
+  .disclaimer-box strong{color:var(--text);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid var(--border);
+    padding:6px 0;
+  }
+  .faq-question{
+    width:100%;text-align:left;background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 4px;font-weight:700;font-size:1rem;color:var(--text);
+  }
+  .faq-question .icon{
+    width:22px;height:22px;flex-shrink:0;position:relative;
+  }
+  .faq-question .icon::before,.faq-question .icon::after{
+    content:'';position:absolute;background:var(--blue);border-radius:2px;
+  }
+  .faq-question .icon::before{width:14px;height:2px;top:10px;left:4px;}
+  .faq-question .icon::after{width:2px;height:14px;left:10px;top:4px;transition:transform .2s ease;}
+  .faq-item.open .icon::after{transform:rotate(90deg);}
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .faq-item.open .faq-answer{max-height:400px;}
+  .faq-answer p{color:var(--text-muted);padding:0 4px 18px;margin:0;font-size:0.95rem;}
+
+  /* ---------- More Free Tools ---------- */
+  .tools-grid{
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:24px;max-width:1160px;margin:0 auto;
+  }
+  @media (max-width:560px){ .tools-grid{grid-template-columns:1fr;} }
+  .tool-promo-card{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:28px 24px;text-align:center;
+    box-shadow:var(--shadow-sm);
+    display:flex;flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .tool-promo-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .tool-promo-icon{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--gradient);
+    box-shadow:0 8px 20px rgba(139,92,246,0.35);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+    flex-shrink:0;
+  }
+  .tool-promo-icon svg{width:26px;height:26px;stroke:#fff;color:#fff;}
+  .tool-promo-icon .glyph{color:#fff;font-weight:800;font-size:1.2rem;line-height:1;}
+  .tool-promo-card h3{font-size:1.1rem;}
+  .tool-promo-card p{color:var(--text-muted);font-size:0.92rem;margin:0 0 22px;flex:1;}
+  .tool-promo-card .btn{margin-top:auto;}
+
+  /* Footer */
+  footer{
+    background:var(--footer-bg);color:var(--footer-text);padding:56px 24px 28px;
+  }
+  .footer-inner{
+    max-width:1160px;margin:0 auto;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px;
+    padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo .lg-file{color:#fff;}
+  .footer-brand .logo .lg-tools{color:var(--footer-muted);}
+  .footer-brand .logo{margin-bottom:12px;}
+  .footer-brand p{max-width:300px;color:var(--footer-muted);font-size:0.9rem;}
+  .footer-col h4{color:#fff;font-size:0.92rem;margin-bottom:14px;}
+  .footer-col ul{list-style:none;padding:0;margin:0;}
+  .footer-col li{margin-bottom:10px;}
+  .footer-col a{color:var(--footer-muted);font-size:0.88rem;transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    max-width:1160px;margin:22px auto 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    font-size:0.8rem;color:#82849f;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html#top" class="logo"><span class="lg-file">File</span><span class="lg-fix">Fix</span><span class="lg-tools">Tools</span></a>
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#tool">Compress Image</a></li>
+        <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+        <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+        <li><a href="salary-calculator.html#tool" class="active-link">Salary Calculator</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#more-tools" tabindex="0">More Tools
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">Image Compressor</a></li>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+            <li><a href="index.html#seo">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0110 0v3"/></svg>
+        Instant, private, in-browser calculations
+      </span>
+      <h1>Free <span class="grad">Salary Calculator</span></h1>
+      <p class="subhead">Convert your pay between annual, monthly, biweekly, weekly, daily, and hourly rates instantly — including overtime and bonus income. Also try our <a href="mortgage-calculator.html" class="inline-link">Mortgage Calculator</a> and <a href="percentage-calculator.html" class="inline-link">Percentage Calculator</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN TOOL ============ -->
+  <section class="tool-section" id="tool">
+    <div class="container">
+      <div class="tool-card">
+
+        <div class="form-section-title">Salary Details</div>
+        <div class="mc-fields">
+          <div class="mc-field">
+            <label for="annualSalary">Annual Salary</label>
+            <div class="unit-input">
+              <span>$</span>
+              <input type="number" id="annualSalary" min="0" step="500" value="60000" inputmode="decimal">
+            </div>
+            <div class="mc-hint">Base salary before overtime and bonus.</div>
+          </div>
+          <div class="mc-field">
+            <label for="hoursPerWeek">Hours Per Week</label>
+            <div class="unit-input">
+              <input type="number" id="hoursPerWeek" min="1" max="168" step="0.5" value="40" inputmode="decimal">
+              <span class="suffix">hrs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc-fields" style="margin-top:16px;">
+          <div class="mc-field">
+            <label for="weeksPerYear">Weeks Per Year</label>
+            <div class="unit-input">
+              <select id="weeksPerYear">
+                <option value="52" selected>52 weeks (standard)</option>
+                <option value="50">50 weeks (2 weeks unpaid leave)</option>
+                <option value="48">48 weeks (4 weeks unpaid leave)</option>
+                <option value="46">46 weeks (6 weeks unpaid leave)</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="mc-hint" id="customWeeksHint" style="display:none;">
+              <div class="unit-input" style="margin-top:8px;">
+                <input type="number" id="customWeeks" min="1" max="52" step="0.5" value="52" inputmode="decimal">
+                <span class="suffix">weeks</span>
+              </div>
+            </div>
+          </div>
+          <div class="mc-field">
+            <label for="bonusIncome">Bonus / Additional Annual Income <span class="mc-hint" style="margin:0;">(optional)</span></label>
+            <div class="unit-input">
+              <span>$</span>
+              <input type="number" id="bonusIncome" min="0" step="100" value="0" inputmode="decimal">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section-title">Overtime (Optional)</div>
+        <div class="mc-fields">
+          <div class="mc-field">
+            <label for="overtimeHours">Overtime Hours Per Week</label>
+            <div class="unit-input">
+              <input type="number" id="overtimeHours" min="0" max="100" step="0.5" value="0" inputmode="decimal">
+              <span class="suffix">hrs</span>
+            </div>
+          </div>
+          <div class="mc-field">
+            <label for="overtimeMultiplier">Overtime Multiplier</label>
+            <div class="unit-input">
+              <input type="number" id="overtimeMultiplier" min="1" max="5" step="0.1" value="1.5" inputmode="decimal">
+              <span class="suffix">×</span>
+            </div>
+            <div class="mc-hint">1.5× is standard "time-and-a-half" overtime.</div>
+          </div>
+        </div>
+
+        <div class="mc-error" id="mcError"></div>
+
+        <div class="mc-actions">
+          <button type="button" class="btn btn-primary btn-block" id="calcBtn">Calculate Salary</button>
+          <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+        </div>
+
+        <!-- Results -->
+        <div class="mc-results" id="mcResults">
+
+          <div class="mc-hero-stat">
+            <div class="label">Total Estimated Annual Income</div>
+            <div class="value" id="totalAnnual">$0</div>
+            <div class="sub" id="totalAnnualSub">Base salary, overtime & bonus combined</div>
+          </div>
+
+          <div class="mc-stat-grid">
+            <div class="mc-stat">
+              <div class="label">Annual Income</div>
+              <div class="value" id="statAnnual">—</div>
+            </div>
+            <div class="mc-stat">
+              <div class="label">Monthly Income</div>
+              <div class="value" id="statMonthly">—</div>
+            </div>
+            <div class="mc-stat">
+              <div class="label">Biweekly Income</div>
+              <div class="value" id="statBiweekly">—</div>
+            </div>
+            <div class="mc-stat">
+              <div class="label">Weekly Income</div>
+              <div class="value" id="statWeekly">—</div>
+            </div>
+            <div class="mc-stat">
+              <div class="label">Daily Income</div>
+              <div class="value" id="statDaily">—</div>
+            </div>
+            <div class="mc-stat">
+              <div class="label">Hourly Wage</div>
+              <div class="value" id="statHourly">—</div>
+            </div>
+            <div class="mc-stat" id="statOvertimeWrap" style="display:none;">
+              <div class="label">Estimated Overtime Pay</div>
+              <div class="value green" id="statOvertime">—</div>
+            </div>
+            <div class="mc-stat" id="statBonusWrap" style="display:none;">
+              <div class="label">Bonus Income</div>
+              <div class="value green" id="statBonus">—</div>
+            </div>
+          </div>
+
+          <div class="mc-savings-note" id="savingsNote" style="display:none;"></div>
+
+          <div class="mc-result-actions">
+            <button type="button" class="copy-btn" id="copyResultsBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy Results
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="section-alt">
+    <div class="container seo-content">
+      <h2>About This Salary Calculator</h2>
+      <p>This free salary calculator converts your pay between annual, monthly, biweekly, weekly, daily, and hourly rates in seconds. Enter your annual salary, weekly hours, and weeks worked per year to see a full breakdown, plus optional overtime pay and bonus income added to your total estimated annual earnings.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>How to Use the Salary Calculator</h2>
+        <p>Enter your pay details to get an instant, detailed income breakdown.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Enter Salary Details</h3>
+          <p>Fill in your annual salary, hours worked per week, and weeks worked per year.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Add Overtime &amp; Bonus</h3>
+          <p>Include any overtime hours, your overtime multiplier, and additional bonus income.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Review Your Results</h3>
+          <p>See your income broken down by year, month, biweek, week, day, and hour.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW SALARY IS CALCULATED ============ -->
+  <section class="section-alt" id="seo">
+    <div class="container seo-content">
+      <h2>How Salary Is Calculated</h2>
+      <p>Your salary is converted between pay periods by working out how many hours or periods fit into a year based on your schedule. This calculator uses your weekly hours and weeks worked per year to determine your true hourly rate, then scales that rate up or down to show every common pay period.</p>
+
+      <h3>Annual, Monthly, Weekly &amp; Hourly Pay Explained</h3>
+      <ul>
+        <li><strong>Annual Income:</strong> Your base salary plus any overtime and bonus income for the full year.</li>
+        <li><strong>Monthly Income:</strong> Annual income divided by 12 calendar months.</li>
+        <li><strong>Biweekly Income:</strong> Annual income divided by 26 pay periods (every two weeks).</li>
+        <li><strong>Weekly Income:</strong> Annual income divided by the number of weeks you work per year.</li>
+        <li><strong>Daily Income:</strong> Weekly income divided by 5 working days.</li>
+        <li><strong>Hourly Wage:</strong> Your base annual salary divided by total hours worked per year (weekly hours × weeks per year).</li>
+      </ul>
+
+      <h3>How Overtime Pay Is Calculated</h3>
+      <p>Overtime pay is calculated by multiplying your hourly wage by your chosen overtime multiplier — typically 1.5× for time-and-a-half — and then by your weekly overtime hours and the number of weeks you work per year. This amount is added on top of your base salary in the total estimated annual income.</p>
+
+      <h3>Why Weeks Per Year Matters</h3>
+      <p>Not everyone works a full 52-week year. Unpaid leave, seasonal work, or unpaid holidays can reduce the number of weeks actually worked, which changes your effective hourly and weekly pay even if your annual salary stays the same. Adjusting this field gives a more accurate picture of your real pay rate.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about calculating your salary.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is my hourly wage calculated from my annual salary?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Your hourly wage is calculated by dividing your annual salary by the total number of hours you work in a year, which is your hours per week multiplied by your weeks worked per year.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How many pay periods are in a biweekly pay schedule?<span class="icon"></span></button>
+          <div class="faq-answer"><p>A biweekly pay schedule has 26 pay periods per year, since employees are paid every two weeks. This calculator divides your annual income by 26 to estimate your biweekly pay.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Does this calculator include taxes or deductions?<span class="icon"></span></button>
+          <div class="faq-answer"><p>No. This calculator estimates gross pay only, before taxes, insurance, retirement contributions, or any other deductions are taken out.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is overtime pay calculated?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Overtime pay is your hourly wage multiplied by your overtime multiplier, then multiplied by your weekly overtime hours and the number of weeks you work per year. Standard overtime is typically 1.5 times your normal hourly rate.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What if I don't work a full 52-week year?<span class="icon"></span></button>
+          <div class="faq-answer"><p>You can adjust the weeks per year field to reflect unpaid leave, seasonal work, or unpaid holidays, and every result will recalculate to reflect your actual working schedule.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How is bonus income added to my total?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Any bonus or additional annual income you enter is added directly to your base annual salary and overtime pay to produce your total estimated annual income.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Can I use this calculator if I'm paid hourly instead of salaried?<span class="icon"></span></button>
+          <div class="faq-answer"><p>Yes. Enter your expected annual salary based on your hourly rate and typical hours, and the calculator will show the equivalent monthly, weekly, daily, and hourly breakdown alongside any overtime or bonus income.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is my data sent to a server?<span class="icon"></span></button>
+          <div class="faq-answer"><p>No. Every calculation runs directly in your browser using JavaScript. Nothing you enter is ever transmitted or stored anywhere.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DISCLAIMER ============ -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="disclaimer-box">
+        <strong>Disclaimer:</strong> This salary calculator provides estimates for informational and planning purposes only. Results reflect gross pay and do not include income tax, payroll tax, insurance, retirement contributions, or other deductions, and may differ from your actual take-home pay. FileFixTools is not a financial or tax advisor — please consult a licensed professional for guidance specific to your situation.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MORE FREE TOOLS ============ -->
+  <section id="more-tools">
+    <div class="container">
+      <div class="section-head">
+        <h2>More Free Tools</h2>
+        <p>Explore more free, private, in-browser tools from FileFixTools.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+          </div>
+          <h3>Image Compressor</h3>
+          <p>Compress JPG, PNG, and WebP images to any exact target file size.</p>
+          <a href="./index.html" class="btn btn-primary">Try Image Compressor</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+          </div>
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages, percentage increase, decrease, and percentage change instantly.</p>
+          <a href="./percentage-calculator.html" class="btn btn-primary">Try Percentage Calculator</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 2.5l9 7"/><path d="M5 9.5V20a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9.5"/></svg>
+          </div>
+          <h3>Mortgage Calculator</h3>
+          <p>Estimate your monthly mortgage payment including taxes, insurance, PMI, and HOA fees.</p>
+          <a href="./mortgage-calculator.html" class="btn btn-primary">Try Mortgage Calculator</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3>Loan Calculator</h3>
+          <p>Calculate your monthly loan payment, total interest, payoff time, and amortization schedule.</p>
+          <a href="./loan-calculator.html" class="btn btn-primary">Try Loan Calculator</a>
+        </div>
+
+        <div class="tool-promo-card">
+          <div class="tool-promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M2.5 11h19"/><path d="M7 7V5.5A2.5 2.5 0 019.5 3h5A2.5 2.5 0 0117 5.5V7"/><path d="M14.5 11v2.5"/></svg>
+          </div>
+          <h3>Salary Calculator</h3>
+          <p>Convert your pay between annual, monthly, biweekly, weekly, daily, and hourly rates.</p>
+          <a href="./salary-calculator.html" class="btn btn-primary">Try Salary Calculator</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><span class="lg-file">File</span><span class="lg-fix">Fix</span><span class="lg-tools">Tools</span></div>
+      <p>Free online tools for images and files — fast, private, and processed entirely in your browser.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="index.html#tool">Compress Image</a></li>
+        <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+        <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+        <li><a href="salary-calculator.html#tool">Salary Calculator</a></li>
+        <li><a href="loan-calculator.html">Loan Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#seo">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="index.html#top">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="index.html#top">Privacy Policy</a></li>
+        <li><a href="index.html#top">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> FileFixTools. All rights reserved.</span>
+    <span>Your data never leaves your device.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   FileFixTools — Salary Calculator
+   Vanilla JS, fully client-side, no backend
+   ========================================================= */
+
+(function(){
+  'use strict';
+
+  /* ---------- Mobile nav toggle ---------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav    = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', function(){
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', function(){
+      const willOpen = !item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('open', willOpen);
+      q.setAttribute('aria-expanded', willOpen);
+    });
+  });
+
+  /* ---------- Element references ---------- */
+  const annualSalaryEl      = document.getElementById('annualSalary');
+  const hoursPerWeekEl      = document.getElementById('hoursPerWeek');
+  const weeksPerYearEl      = document.getElementById('weeksPerYear');
+  const customWeeksHint     = document.getElementById('customWeeksHint');
+  const customWeeksEl       = document.getElementById('customWeeks');
+  const overtimeHoursEl     = document.getElementById('overtimeHours');
+  const overtimeMultiplierEl = document.getElementById('overtimeMultiplier');
+  const bonusIncomeEl       = document.getElementById('bonusIncome');
+
+  const calcBtn  = document.getElementById('calcBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const mcError  = document.getElementById('mcError');
+  const mcResults = document.getElementById('mcResults');
+
+  const totalAnnualEl    = document.getElementById('totalAnnual');
+  const totalAnnualSubEl = document.getElementById('totalAnnualSub');
+  const statAnnual       = document.getElementById('statAnnual');
+  const statMonthly      = document.getElementById('statMonthly');
+  const statBiweekly     = document.getElementById('statBiweekly');
+  const statWeekly       = document.getElementById('statWeekly');
+  const statDaily        = document.getElementById('statDaily');
+  const statHourly       = document.getElementById('statHourly');
+  const statOvertimeWrap = document.getElementById('statOvertimeWrap');
+  const statOvertime     = document.getElementById('statOvertime');
+  const statBonusWrap    = document.getElementById('statBonusWrap');
+  const statBonus        = document.getElementById('statBonus');
+  const savingsNote      = document.getElementById('savingsNote');
+  const copyResultsBtn   = document.getElementById('copyResultsBtn');
+
+  /* ---------- Custom weeks toggle ---------- */
+  weeksPerYearEl.addEventListener('change', function(){
+    customWeeksHint.style.display = weeksPerYearEl.value === 'custom' ? 'block' : 'none';
+  });
+
+  function getWeeksPerYear(){
+    if (weeksPerYearEl.value === 'custom'){
+      const v = parseFloat(customWeeksEl.value);
+      return isNaN(v) || v <= 0 ? 52 : v;
+    }
+    return parseFloat(weeksPerYearEl.value);
+  }
+
+  /* ---------- Helpers ---------- */
+  function fmtCurrency(n){
+    if (!isFinite(n)) n = 0;
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+  function fmtCurrency2(n){
+    if (!isFinite(n)) n = 0;
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function showError(msg){
+    mcError.textContent = msg;
+    mcError.classList.add('show');
+  }
+  function clearError(){
+    mcError.textContent = '';
+    mcError.classList.remove('show');
+  }
+
+  /* ---------- Main calculation ---------- */
+  function calculate(){
+    clearError();
+
+    const annualSalary = parseFloat(annualSalaryEl.value);
+    const hoursPerWeek = parseFloat(hoursPerWeekEl.value);
+    const weeksPerYear = getWeeksPerYear();
+    const overtimeHours = parseFloat(overtimeHoursEl.value) || 0;
+    const overtimeMultiplier = parseFloat(overtimeMultiplierEl.value);
+    const bonusIncome = parseFloat(bonusIncomeEl.value) || 0;
+
+    // ---- Validation ----
+    if (isNaN(annualSalary) || annualSalary <= 0){
+      showError('Please enter a valid annual salary greater than 0.');
+      return;
+    }
+    if (isNaN(hoursPerWeek) || hoursPerWeek <= 0){
+      showError('Please enter valid hours per week (greater than 0).');
+      return;
+    }
+    if (isNaN(weeksPerYear) || weeksPerYear <= 0){
+      showError('Please enter a valid number of weeks per year (greater than 0).');
+      return;
+    }
+    if (overtimeHours < 0){
+      showError('Overtime hours cannot be negative.');
+      return;
+    }
+    if (isNaN(overtimeMultiplier) || overtimeMultiplier < 1){
+      showError('Overtime multiplier must be 1 or higher.');
+      return;
+    }
+    if (bonusIncome < 0){
+      showError('Bonus income cannot be negative.');
+      return;
+    }
+
+    const totalHoursPerYear = hoursPerWeek * weeksPerYear;
+    const hourlyWage = annualSalary / totalHoursPerYear;
+
+    const overtimeRate = hourlyWage * overtimeMultiplier;
+    const overtimePay = overtimeRate * overtimeHours * weeksPerYear;
+
+    const totalAnnualIncome = annualSalary + overtimePay + bonusIncome;
+
+    const monthlyIncome = totalAnnualIncome / 12;
+    const biweeklyIncome = totalAnnualIncome / 26;
+    const weeklyIncome = totalAnnualIncome / weeksPerYear;
+    const dailyIncome = weeklyIncome / 5;
+
+    // ---- Populate results ----
+    totalAnnualEl.textContent = fmtCurrency(totalAnnualIncome);
+    totalAnnualSubEl.textContent = (overtimePay > 0 || bonusIncome > 0)
+      ? 'Base salary, overtime & bonus combined'
+      : 'Base annual salary';
+
+    statAnnual.textContent = fmtCurrency(totalAnnualIncome);
+    statMonthly.textContent = fmtCurrency2(monthlyIncome);
+    statBiweekly.textContent = fmtCurrency2(biweeklyIncome);
+    statWeekly.textContent = fmtCurrency2(weeklyIncome);
+    statDaily.textContent = fmtCurrency2(dailyIncome);
+    statHourly.textContent = fmtCurrency2(hourlyWage);
+
+    if (overtimePay > 0){
+      statOvertimeWrap.style.display = '';
+      statOvertime.textContent = fmtCurrency2(overtimePay);
+    } else {
+      statOvertimeWrap.style.display = 'none';
+    }
+
+    if (bonusIncome > 0){
+      statBonusWrap.style.display = '';
+      statBonus.textContent = fmtCurrency2(bonusIncome);
+    } else {
+      statBonusWrap.style.display = 'none';
+    }
+
+    if (overtimePay > 0 || bonusIncome > 0){
+      const extras = overtimePay + bonusIncome;
+      savingsNote.style.display = 'block';
+      savingsNote.textContent = 'Overtime and bonus income add an estimated ' + fmtCurrency(extras) +
+        ' per year on top of your base salary of ' + fmtCurrency(annualSalary) + '.';
+    } else {
+      savingsNote.style.display = 'none';
+    }
+
+    mcResults.classList.add('show');
+    mcResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  calcBtn.addEventListener('click', calculate);
+
+  /* ---------- Reset ---------- */
+  resetBtn.addEventListener('click', function(){
+    annualSalaryEl.value = '60000';
+    hoursPerWeekEl.value = '40';
+    weeksPerYearEl.value = '52';
+    customWeeksHint.style.display = 'none';
+    customWeeksEl.value = '52';
+    overtimeHoursEl.value = '0';
+    overtimeMultiplierEl.value = '1.5';
+    bonusIncomeEl.value = '0';
+    clearError();
+    mcResults.classList.remove('show');
+  });
+
+  /* ---------- Copy results ---------- */
+  copyResultsBtn.addEventListener('click', function(){
+    const lines = [
+      'Total Estimated Annual Income: ' + totalAnnualEl.textContent,
+      'Annual Income: ' + statAnnual.textContent,
+      'Monthly Income: ' + statMonthly.textContent,
+      'Biweekly Income: ' + statBiweekly.textContent,
+      'Weekly Income: ' + statWeekly.textContent,
+      'Daily Income: ' + statDaily.textContent,
+      'Hourly Wage: ' + statHourly.textContent
+    ];
+    if (statOvertimeWrap.style.display !== 'none'){
+      lines.push('Estimated Overtime Pay: ' + statOvertime.textContent);
+    }
+    if (statBonusWrap.style.display !== 'none'){
+      lines.push('Bonus Income: ' + statBonus.textContent);
+    }
+    const text = lines.join('\n');
+
+    function markCopied(){
+      const original = copyResultsBtn.innerHTML;
+      copyResultsBtn.classList.add('copied');
+      copyResultsBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Copied!';
+      setTimeout(function(){
+        copyResultsBtn.classList.remove('copied');
+        copyResultsBtn.innerHTML = original;
+      }, 1600);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(markCopied).catch(function(){ fallbackCopy(text, markCopied); });
+    } else {
+      fallbackCopy(text, markCopied);
+    }
+  });
+
+  function fallbackCopy(text, onDone){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) { /* ignore */ }
+    document.body.removeChild(ta);
+    if (onDone) onDone();
+  }
+
+  /* ---------- Footer year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Run an initial calculation with the default values ---------- */
+  calculate();
+
+})();
+</script>
+
+<script>
+/* =========================================================
+   Theme (dark mode) toggle — purely presentational, additive.
+   Matches the behavior used on the Image Compressor page.
+   ========================================================= */
+(function(){
+  'use strict';
+  var root = document.documentElement;
+  var toggleBtn = document.getElementById('themeToggle');
+  var STORAGE_KEY = 'filefixtools-theme';
+
+  function applyTheme(theme){
+    if (theme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (err) { /* storage unavailable */ }
+
+  if (saved === 'dark' || saved === 'light') {
+    applyTheme(saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (err) { /* storage unavailable */ }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
